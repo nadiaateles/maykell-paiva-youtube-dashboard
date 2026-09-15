@@ -1,0 +1,589 @@
+{
+  "generatedAt": "2026-09-15",
+  "channel": {
+    "title": "Maykell Paiva",
+    "createdAt": "2012-06-27",
+    "subscribers": 1580,
+    "totalViews": 86446,
+    "videoCount": 244
+  },
+  "lifetime": {
+    "views": 94211,
+    "estimatedMinutesWatched": 74861,
+    "averageViewDuration": 65,
+    "subscribersGained": 1836,
+    "subscribersLost": 254,
+    "likes": 5494,
+    "comments": 343,
+    "shares": 860
+  },
+  "daily90d": [
+    {
+      "date": "2026-06-17",
+      "views": 53,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-06-18",
+      "views": 51,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-06-19",
+      "views": 51,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-06-20",
+      "views": 75,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-06-21",
+      "views": 38,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-06-22",
+      "views": 42,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-06-23",
+      "views": 45,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-06-24",
+      "views": 45,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-06-25",
+      "views": 27,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-06-26",
+      "views": 56,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-06-27",
+      "views": 34,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-06-28",
+      "views": 52,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-06-29",
+      "views": 40,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-06-30",
+      "views": 31,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-07-01",
+      "views": 30,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-02",
+      "views": 40,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-07-03",
+      "views": 41,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-04",
+      "views": 33,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-05",
+      "views": 43,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-07-06",
+      "views": 32,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-07",
+      "views": 22,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-08",
+      "views": 31,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-09",
+      "views": 48,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-10",
+      "views": 62,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-11",
+      "views": 25,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-12",
+      "views": 35,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-13",
+      "views": 38,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-14",
+      "views": 77,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-15",
+      "views": 30,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-16",
+      "views": 30,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-17",
+      "views": 28,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-18",
+      "views": 24,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-19",
+      "views": 28,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-07-20",
+      "views": 39,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-21",
+      "views": 36,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-22",
+      "views": 31,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-23",
+      "views": 24,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-24",
+      "views": 15,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-25",
+      "views": 17,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-26",
+      "views": 27,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-27",
+      "views": 27,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-28",
+      "views": 15,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-29",
+      "views": 24,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-30",
+      "views": 22,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-07-31",
+      "views": 12,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-01",
+      "views": 16,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-02",
+      "views": 55,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-03",
+      "views": 62,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-04",
+      "views": 18,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-05",
+      "views": 36,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-06",
+      "views": 17,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-08-07",
+      "views": 12,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-08-08",
+      "views": 33,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-09",
+      "views": 27,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-10",
+      "views": 20,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-11",
+      "views": 26,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-12",
+      "views": 32,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-08-13",
+      "views": 24,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-14",
+      "views": 33,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-15",
+      "views": 19,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-16",
+      "views": 18,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-17",
+      "views": 19,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-18",
+      "views": 28,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-19",
+      "views": 25,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-20",
+      "views": 31,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-21",
+      "views": 35,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-22",
+      "views": 27,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-23",
+      "views": 29,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-08-24",
+      "views": 11,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-25",
+      "views": 13,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-26",
+      "views": 23,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-27",
+      "views": 28,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-28",
+      "views": 53,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-29",
+      "views": 43,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-30",
+      "views": 43,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-31",
+      "views": 33,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-01",
+      "views": 19,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-02",
+      "views": 22,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-03",
+      "views": 35,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-04",
+      "views": 67,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-05",
+      "views": 50,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-06",
+      "views": 39,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-07",
+      "views": 46,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-08",
+      "views": 18,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-09",
+      "views": 21,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-10",
+      "views": 37,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-11",
+      "views": 33,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-12",
+      "views": 43,
+      "subscribersGained": 0
+    }
+  ],
+  "trafficSource90d": [
+    {
+      "source": "Busca no YouTube",
+      "views": 1806
+    },
+    {
+      "source": "Inscritos (feed/home)",
+      "views": 336
+    },
+    {
+      "source": "Vídeos relacionados",
+      "views": 281
+    },
+    {
+      "source": "Shorts",
+      "views": 153
+    },
+    {
+      "source": "Página do canal",
+      "views": 136
+    },
+    {
+      "source": "Link externo",
+      "views": 93
+    },
+    {
+      "source": "Playlist",
+      "views": 59
+    },
+    {
+      "source": "Outra página do YouTube",
+      "views": 41
+    },
+    {
+      "source": "Outro (sem link)",
+      "views": 25
+    },
+    {
+      "source": "Notificação",
+      "views": 12
+    },
+    {
+      "source": "Tela final",
+      "views": 2
+    },
+    {
+      "source": "Hashtags",
+      "views": 1
+    }
+  ],
+  "country90d": [
+    {
+      "country": "BR",
+      "views": 1550
+    }
+  ],
+  "topVideos": [
+    {
+      "title": "Sobre a gajeta -  #chimarrao #tradição",
+      "views": 4441,
+      "videoId": "-Y5mZ7IAicw"
+    },
+    {
+      "title": "De como cantar um flete - #shorts",
+      "views": 1932,
+      "videoId": "s3W16gScbDw"
+    },
+    {
+      "title": "PARABÉNS GAÚCHO - CIFRA - MAYKELL PAIVA",
+      "views": 1900,
+      "videoId": "r0DB3hoExv8"
+    },
+    {
+      "title": "Maykell Paiva.m4v",
+      "views": 1826,
+      "videoId": "bzhCkOIJRRM"
+    },
+    {
+      "title": "Esse acorde musical tem um som ímpar 🎼 #musica #violaogaucho #acordes #dicamusical",
+      "views": 1661,
+      "videoId": "f6Jna-uBGCQ"
+    },
+    {
+      "title": "Dele guitarra na Sapecada da Canção 2026",
+      "views": 1613,
+      "videoId": "sBgzXYOH2X0"
+    },
+    {
+      "title": "Encontro de guitarreiros, sai de tudo 🎼👌🏻",
+      "views": 1547,
+      "videoId": "-mXqaDszBGA"
+    },
+    {
+      "title": "A gaita não veio - Mas tem as guitarras 🎼✨ #maykellpaiva",
+      "views": 1449,
+      "videoId": "jLdkXMtnaX8"
+    },
+    {
+      "title": "14 de janeiro de 2026",
+      "views": 1407,
+      "videoId": "JQGUzPj7-KE"
+    },
+    {
+      "title": "APAYSANADO - (MARCELLO CAMINHA)",
+      "views": 1348,
+      "videoId": "uFoX9X_V9DE"
+    },
+    {
+      "title": "Bastidores dos nossos festivais!",
+      "views": 1344,
+      "videoId": "byUTNJLOodA"
+    },
+    {
+      "title": "Rodeio de Vacaria #maykellpaiva #violaogaucho  #musica #shortyoutube #gauchos",
+      "views": 1295,
+      "videoId": "EuEP0WswtiI"
+    }
+  ],
+  "almaDoSul": [
+    {
+      "title": "01. Paz do Campo - Alma do Sul | Maykell Paiva",
+      "publishedAt": "2026-09-13T02:56:16Z",
+      "views": 60,
+      "likes": 3,
+      "comments": 0
+    }
+  ]
+}

@@ -1,0 +1,890 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard YouTube - Maykell Paiva</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --surface: #fcfcfb;
+  --page: #f9f9f7;
+  --ink: #0b0b0b;
+  --ink-secondary: #52514e;
+  --muted: #898781;
+  --grid: #e1e0d9;
+  --baseline: #c3c2b7;
+  --border: rgba(11,11,11,0.10);
+  --blue: #2a78d6;
+  --orange: #eb6834;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --surface: #1a1a19;
+    --page: #0d0d0d;
+    --ink: #ffffff;
+    --ink-secondary: #c3c2b7;
+    --muted: #898781;
+    --grid: #2c2c2a;
+    --baseline: #383835;
+    --border: rgba(255,255,255,0.10);
+    --blue: #3987e5;
+    --orange: #d95926;
+    color-scheme: dark;
+  }
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--page);
+  color:var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height:1.5;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:32px 20px 64px;}
+header{margin-bottom:28px;}
+.eyebrow{font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);font-weight:600;}
+h1{font-size:26px;font-weight:700;margin:6px 0 4px;}
+.updated{font-size:13px;color:var(--muted);}
+
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px;}
+@media (max-width:720px){.kpi-row{grid-template-columns:repeat(2,1fr);}}
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;}
+.kpi .label{font-size:12px;color:var(--ink-secondary);margin-bottom:6px;}
+.kpi .value{font-size:28px;font-weight:700;font-variant-numeric:tabular-nums;}
+
+section{margin-bottom:32px;}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 22px;}
+.panel h2{font-size:16px;font-weight:700;margin:0 0 2px;}
+.panel .sub{font-size:12.5px;color:var(--muted);margin:0 0 16px;}
+.chart-box{position:relative;}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media (max-width:780px){.two-col{grid-template-columns:1fr;}}
+
+.note{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 16px;font-size:13px;color:var(--ink-secondary);margin-top:10px;}
+
+.alma-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+@media (max-width:720px){.alma-grid{grid-template-columns:repeat(2,1fr);}}
+.alma-tile{background:var(--page);border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
+.alma-tile .label{font-size:11.5px;color:var(--ink-secondary);margin-bottom:6px;}
+.alma-tile .value{font-size:22px;font-weight:700;color:var(--orange);font-variant-numeric:tabular-nums;}
+
+footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--border);padding-top:16px;margin-top:8px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="eyebrow">YouTube &middot; Maykell Paiva</span>
+    <h1 id="channelTitle">Dashboard do canal</h1>
+    <div class="updated" id="updatedAt"></div>
+  </header>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="label">Inscritos</div><div class="value" id="kpiSubs">-</div></div>
+    <div class="kpi"><div class="label">Visualizações totais</div><div class="value" id="kpiViews">-</div></div>
+    <div class="kpi"><div class="label">Vídeos publicados</div><div class="value" id="kpiVideos">-</div></div>
+    <div class="kpi"><div class="label">Duração média de visualização</div><div class="value" id="kpiAvgDur">-</div></div>
+  </div>
+
+  <section>
+    <div class="panel">
+      <h2>Alma do Sul - acompanhamento do EP</h2>
+      <div class="sub">Faixas já publicadas no YouTube, na ordem de lançamento</div>
+      <div class="alma-grid" id="almaGrid"></div>
+      <div class="note">Métricas detalhadas por dia da faixa mais recente podem levar de 2 a 3 dias pra aparecer no relatório - é defasagem normal da plataforma, não falta de dado.</div>
+    </div>
+  </section>
+
+  <section class="two-col">
+    <div class="panel">
+      <h2>Visualizações por dia</h2>
+      <div class="sub">Últimos 90 dias, canal inteiro</div>
+      <div class="chart-box"><canvas id="chartViews" height="220"></canvas></div>
+    </div>
+    <div class="panel">
+      <h2>Inscritos ganhos por dia</h2>
+      <div class="sub">Últimos 90 dias, canal inteiro</div>
+      <div class="chart-box"><canvas id="chartSubs" height="220"></canvas></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="panel">
+      <h2>De onde vêm as visualizações</h2>
+      <div class="sub">Fonte de tráfego, últimos 90 dias</div>
+      <div class="chart-box"><canvas id="chartTraffic" height="280"></canvas></div>
+      <div class="note" id="countryNote"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="panel">
+      <h2>Vídeos com mais visualizações</h2>
+      <div class="sub">Histórico completo do canal</div>
+      <div class="chart-box"><canvas id="chartTop" height="320"></canvas></div>
+    </div>
+  </section>
+
+  <footer id="footerNote"></footer>
+
+</div>
+
+<script id="dashboard-data" type="application/json">
+{
+  "generatedAt": "2026-09-15",
+  "channel": {
+    "title": "Maykell Paiva",
+    "createdAt": "2012-06-27",
+    "subscribers": 1580,
+    "totalViews": 86446,
+    "videoCount": 244
+  },
+  "lifetime": {
+    "views": 94211,
+    "estimatedMinutesWatched": 74861,
+    "averageViewDuration": 65,
+    "subscribersGained": 1836,
+    "subscribersLost": 254,
+    "likes": 5494,
+    "comments": 343,
+    "shares": 860
+  },
+  "daily90d": [
+    {
+      "date": "2026-06-17",
+      "views": 53,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-06-18",
+      "views": 51,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-06-19",
+      "views": 51,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-06-20",
+      "views": 75,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-06-21",
+      "views": 38,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-06-22",
+      "views": 42,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-06-23",
+      "views": 45,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-06-24",
+      "views": 45,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-06-25",
+      "views": 27,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-06-26",
+      "views": 56,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-06-27",
+      "views": 34,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-06-28",
+      "views": 52,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-06-29",
+      "views": 40,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-06-30",
+      "views": 31,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-07-01",
+      "views": 30,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-02",
+      "views": 40,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-07-03",
+      "views": 41,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-04",
+      "views": 33,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-05",
+      "views": 43,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-07-06",
+      "views": 32,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-07",
+      "views": 22,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-08",
+      "views": 31,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-09",
+      "views": 48,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-10",
+      "views": 62,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-11",
+      "views": 25,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-12",
+      "views": 35,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-13",
+      "views": 38,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-14",
+      "views": 77,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-15",
+      "views": 30,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-16",
+      "views": 30,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-17",
+      "views": 28,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-18",
+      "views": 24,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-19",
+      "views": 28,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-07-20",
+      "views": 39,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-21",
+      "views": 36,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-22",
+      "views": 31,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-23",
+      "views": 24,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-24",
+      "views": 15,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-25",
+      "views": 17,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-26",
+      "views": 27,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-27",
+      "views": 27,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-28",
+      "views": 15,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-29",
+      "views": 24,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-07-30",
+      "views": 22,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-07-31",
+      "views": 12,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-01",
+      "views": 16,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-02",
+      "views": 55,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-03",
+      "views": 62,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-04",
+      "views": 18,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-05",
+      "views": 36,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-06",
+      "views": 17,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-08-07",
+      "views": 12,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-08-08",
+      "views": 33,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-09",
+      "views": 27,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-10",
+      "views": 20,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-11",
+      "views": 26,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-12",
+      "views": 32,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-08-13",
+      "views": 24,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-14",
+      "views": 33,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-15",
+      "views": 19,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-16",
+      "views": 18,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-17",
+      "views": 19,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-18",
+      "views": 28,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-19",
+      "views": 25,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-20",
+      "views": 31,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-21",
+      "views": 35,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-22",
+      "views": 27,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-23",
+      "views": 29,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-08-24",
+      "views": 11,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-25",
+      "views": 13,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-26",
+      "views": 23,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-27",
+      "views": 28,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-28",
+      "views": 53,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-29",
+      "views": 43,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-30",
+      "views": 43,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-08-31",
+      "views": 33,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-01",
+      "views": 19,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-02",
+      "views": 22,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-03",
+      "views": 35,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-04",
+      "views": 67,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-05",
+      "views": 50,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-06",
+      "views": 39,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-07",
+      "views": 46,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-08",
+      "views": 18,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-09",
+      "views": 21,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-10",
+      "views": 37,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-11",
+      "views": 33,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-12",
+      "views": 43,
+      "subscribersGained": 0
+    }
+  ],
+  "trafficSource90d": [
+    {
+      "source": "Busca no YouTube",
+      "views": 1806
+    },
+    {
+      "source": "Inscritos (feed/home)",
+      "views": 336
+    },
+    {
+      "source": "Vídeos relacionados",
+      "views": 281
+    },
+    {
+      "source": "Shorts",
+      "views": 153
+    },
+    {
+      "source": "Página do canal",
+      "views": 136
+    },
+    {
+      "source": "Link externo",
+      "views": 93
+    },
+    {
+      "source": "Playlist",
+      "views": 59
+    },
+    {
+      "source": "Outra página do YouTube",
+      "views": 41
+    },
+    {
+      "source": "Outro (sem link)",
+      "views": 25
+    },
+    {
+      "source": "Notificação",
+      "views": 12
+    },
+    {
+      "source": "Tela final",
+      "views": 2
+    },
+    {
+      "source": "Hashtags",
+      "views": 1
+    }
+  ],
+  "country90d": [
+    {
+      "country": "BR",
+      "views": 1550
+    }
+  ],
+  "topVideos": [
+    {
+      "title": "Sobre a gajeta -  #chimarrao #tradição",
+      "views": 4441,
+      "videoId": "-Y5mZ7IAicw"
+    },
+    {
+      "title": "De como cantar um flete - #shorts",
+      "views": 1932,
+      "videoId": "s3W16gScbDw"
+    },
+    {
+      "title": "PARABÉNS GAÚCHO - CIFRA - MAYKELL PAIVA",
+      "views": 1900,
+      "videoId": "r0DB3hoExv8"
+    },
+    {
+      "title": "Maykell Paiva.m4v",
+      "views": 1826,
+      "videoId": "bzhCkOIJRRM"
+    },
+    {
+      "title": "Esse acorde musical tem um som ímpar 🎼 #musica #violaogaucho #acordes #dicamusical",
+      "views": 1661,
+      "videoId": "f6Jna-uBGCQ"
+    },
+    {
+      "title": "Dele guitarra na Sapecada da Canção 2026",
+      "views": 1613,
+      "videoId": "sBgzXYOH2X0"
+    },
+    {
+      "title": "Encontro de guitarreiros, sai de tudo 🎼👌🏻",
+      "views": 1547,
+      "videoId": "-mXqaDszBGA"
+    },
+    {
+      "title": "A gaita não veio - Mas tem as guitarras 🎼✨ #maykellpaiva",
+      "views": 1449,
+      "videoId": "jLdkXMtnaX8"
+    },
+    {
+      "title": "14 de janeiro de 2026",
+      "views": 1407,
+      "videoId": "JQGUzPj7-KE"
+    },
+    {
+      "title": "APAYSANADO - (MARCELLO CAMINHA)",
+      "views": 1348,
+      "videoId": "uFoX9X_V9DE"
+    },
+    {
+      "title": "Bastidores dos nossos festivais!",
+      "views": 1344,
+      "videoId": "byUTNJLOodA"
+    },
+    {
+      "title": "Rodeio de Vacaria #maykellpaiva #violaogaucho  #musica #shortyoutube #gauchos",
+      "views": 1295,
+      "videoId": "EuEP0WswtiI"
+    }
+  ],
+  "almaDoSul": [
+    {
+      "title": "01. Paz do Campo - Alma do Sul | Maykell Paiva",
+      "publishedAt": "2026-09-13T02:56:16Z",
+      "views": 60,
+      "likes": 3,
+      "comments": 0
+    }
+  ]
+}
+</script>
+
+<script>
+const DATA = JSON.parse(document.getElementById('dashboard-data').textContent);
+
+const css = getComputedStyle(document.documentElement);
+const ink = css.getPropertyValue('--ink-secondary').trim();
+const muted = css.getPropertyValue('--muted').trim();
+const grid = css.getPropertyValue('--grid').trim();
+const blue = css.getPropertyValue('--blue').trim();
+const orange = css.getPropertyValue('--orange').trim();
+
+function fmt(n){ return new Intl.NumberFormat('pt-BR').format(n); }
+function truncate(s, n){ return s.length > n ? s.slice(0, n - 1) + '…' : s; }
+function fmtDatePt(iso){
+  const [y,m,d] = iso.split('-');
+  return `${d}/${m}`;
+}
+
+document.getElementById('channelTitle').textContent = DATA.channel.title;
+document.getElementById('updatedAt').textContent =
+  `Canal criado em ${DATA.channel.createdAt.split('-').reverse().join('/')} · dados atualizados em ${DATA.generatedAt.split('-').reverse().join('/')}`;
+
+document.getElementById('kpiSubs').textContent = fmt(DATA.channel.subscribers);
+document.getElementById('kpiViews').textContent = fmt(DATA.channel.totalViews);
+document.getElementById('kpiVideos').textContent = fmt(DATA.channel.videoCount);
+document.getElementById('kpiAvgDur').textContent = DATA.lifetime.averageViewDuration + 's';
+
+// Alma do Sul tiles
+const almaGrid = document.getElementById('almaGrid');
+DATA.almaDoSul.forEach(v => {
+  const days = Math.max(1, Math.round((new Date(DATA.generatedAt) - new Date(v.publishedAt)) / 86400000));
+  [
+    ['Faixa', v.title.replace(/\|.*$/, '').trim()],
+    ['Visualizações', fmt(v.views)],
+    ['Curtidas', fmt(v.likes)],
+    ['No ar há', days + (days === 1 ? ' dia' : ' dias')],
+  ].forEach(([label, value]) => {
+    const tile = document.createElement('div');
+    tile.className = 'alma-tile';
+    tile.innerHTML = `<div class="label">${label}</div><div class="value">${value}</div>`;
+    almaGrid.appendChild(tile);
+  });
+});
+
+// Direct-label plugin for bar charts (value at the end of each bar)
+const barLabels = {
+  id: 'barLabels',
+  afterDatasetsDraw(chart){
+    const {ctx} = chart;
+    chart.data.datasets.forEach((ds, di) => {
+      const meta = chart.getDatasetMeta(di);
+      meta.data.forEach((bar, i) => {
+        const val = ds.data[i];
+        ctx.save();
+        ctx.fillStyle = ink;
+        ctx.font = '600 12px system-ui, sans-serif';
+        if (chart.options.indexAxis === 'y') {
+          ctx.textAlign = 'left';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(fmt(val), bar.x + 8, bar.y);
+        } else {
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'bottom';
+          ctx.fillText(fmt(val), bar.x, bar.y - 6);
+        }
+        ctx.restore();
+      });
+    });
+  }
+};
+
+Chart.defaults.color = ink;
+Chart.defaults.font.family = "system-ui, -apple-system, 'Segoe UI', sans-serif";
+
+// Views per day (line)
+new Chart(document.getElementById('chartViews'), {
+  type: 'line',
+  data: {
+    labels: DATA.daily90d.map(d => fmtDatePt(d.date)),
+    datasets: [{
+      data: DATA.daily90d.map(d => d.views),
+      borderColor: blue, backgroundColor: blue + '22',
+      borderWidth: 2, pointRadius: 0, fill: true, tension: 0.25,
+    }]
+  },
+  options: {
+    plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false } },
+    scales: {
+      x: { ticks: { maxTicksLimit: 8, color: muted }, grid: { display: false } },
+      y: { beginAtZero: true, ticks: { color: muted }, grid: { color: grid } },
+    },
+    interaction: { mode: 'index', intersect: false },
+  }
+});
+
+// Subscribers gained per day (bar)
+new Chart(document.getElementById('chartSubs'), {
+  type: 'bar',
+  data: {
+    labels: DATA.daily90d.map(d => fmtDatePt(d.date)),
+    datasets: [{ data: DATA.daily90d.map(d => d.subscribersGained), backgroundColor: blue, borderRadius: 4, maxBarThickness: 10 }]
+  },
+  options: {
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { maxTicksLimit: 8, color: muted }, grid: { display: false } },
+      y: { beginAtZero: true, ticks: { stepSize: 1, color: muted }, grid: { color: grid } },
+    },
+  }
+});
+
+// Traffic source (horizontal bar)
+const traffic = [...DATA.trafficSource90d].sort((a,b) => b.views - a.views);
+new Chart(document.getElementById('chartTraffic'), {
+  type: 'bar',
+  data: {
+    labels: traffic.map(t => t.source),
+    datasets: [{ data: traffic.map(t => t.views), backgroundColor: blue, borderRadius: 4, maxBarThickness: 18 }]
+  },
+  options: {
+    indexAxis: 'y',
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { beginAtZero: true, ticks: { color: muted }, grid: { color: grid } },
+      y: { ticks: { color: ink }, grid: { display: false } },
+    },
+    layout: { padding: { right: 40 } },
+  },
+  plugins: [barLabels],
+});
+
+const topCountry = DATA.country90d[0];
+document.getElementById('countryNote').textContent = topCountry
+  ? `Público quase inteiramente de ${topCountry.country === 'BR' ? 'Brasil' : topCountry.country} nos últimos 90 dias - sem outro país com volume relevante de visualizações.`
+  : '';
+
+// Top videos (horizontal bar)
+const topVideosList = DATA.topVideos.slice(0, 12);
+new Chart(document.getElementById('chartTop'), {
+  type: 'bar',
+  data: {
+    labels: topVideosList.map(v => truncate(v.title, 42)),
+    datasets: [{ data: topVideosList.map(v => v.views), backgroundColor: blue, borderRadius: 4, maxBarThickness: 18 }]
+  },
+  options: {
+    indexAxis: 'y',
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { title: (items) => topVideosList[items[0].dataIndex].title } },
+    },
+    scales: {
+      x: { beginAtZero: true, ticks: { color: muted }, grid: { color: grid } },
+      y: { ticks: { color: ink, font: { size: 11 } }, grid: { display: false } },
+    },
+    layout: { padding: { right: 50 } },
+  },
+  plugins: [barLabels],
+});
+
+document.getElementById('footerNote').textContent =
+  'Dados oficiais do YouTube (Data API + Analytics API), canal do próprio Maykell Paiva. Snapshot estático - peça uma atualização quando quiser dados mais recentes.';
+</script>
+</body>
+</html>

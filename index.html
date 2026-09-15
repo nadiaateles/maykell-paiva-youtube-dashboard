@@ -17,6 +17,8 @@
   --border: rgba(11,11,11,0.10);
   --blue: #2a78d6;
   --orange: #eb6834;
+  --aqua: #1baf7a;
+  --yellow: #eda100;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark){
@@ -31,6 +33,8 @@
     --border: rgba(255,255,255,0.10);
     --blue: #3987e5;
     --orange: #d95926;
+    --aqua: #199e70;
+    --yellow: #c98500;
     color-scheme: dark;
   }
 }
@@ -72,6 +76,15 @@ section{margin-bottom:32px;}
 .alma-tile .value{font-size:22px;font-weight:700;color:var(--orange);font-variant-numeric:tabular-nums;}
 
 footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--border);padding-top:16px;margin-top:8px;}
+
+.donut-wrap{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.donut-box{position:relative;width:180px;height:180px;flex:none;}
+.donut-legend{display:flex;flex-direction:column;gap:10px;flex:1;min-width:180px;}
+.donut-row{display:flex;align-items:baseline;gap:10px;}
+.donut-row .sw{width:11px;height:11px;border-radius:3px;flex:none;position:relative;top:-1px;}
+.donut-row .lbl{font-size:13.5px;color:var(--ink);flex:1;}
+.donut-row .val{font-size:14px;font-weight:700;font-variant-numeric:tabular-nums;}
+.donut-row .pct{font-size:12px;color:var(--muted);min-width:42px;text-align:right;font-variant-numeric:tabular-nums;}
 </style>
 </head>
 <body>
@@ -106,8 +119,8 @@ footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--border);pa
       <div class="chart-box"><canvas id="chartViews" height="220"></canvas></div>
     </div>
     <div class="panel">
-      <h2>Inscritos ganhos por dia</h2>
-      <div class="sub">Últimos 90 dias, canal inteiro</div>
+      <h2>Inscritos ganhos por semana</h2>
+      <div class="sub">Últimos 90 dias, agrupado por semana</div>
       <div class="chart-box"><canvas id="chartSubs" height="220"></canvas></div>
     </div>
   </section>
@@ -118,6 +131,27 @@ footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--border);pa
       <div class="sub">Fonte de tráfego, últimos 90 dias</div>
       <div class="chart-box"><canvas id="chartTraffic" height="280"></canvas></div>
       <div class="note" id="countryNote"></div>
+    </div>
+  </section>
+
+  <section class="two-col">
+    <div class="panel">
+      <h2>Em que tela assistem</h2>
+      <div class="sub">Tipo de dispositivo, últimos 90 dias</div>
+      <div class="donut-wrap">
+        <div class="chart-box donut-box"><canvas id="chartDevice"></canvas></div>
+        <div class="donut-legend" id="deviceLegend"></div>
+      </div>
+      <div class="note" id="deviceInsight"></div>
+    </div>
+    <div class="panel">
+      <h2>Inscrito ou não inscrito</h2>
+      <div class="sub">De quem assiste, últimos 90 dias</div>
+      <div class="donut-wrap">
+        <div class="chart-box donut-box"><canvas id="chartSubStatus"></canvas></div>
+        <div class="donut-legend" id="subStatusLegend"></div>
+      </div>
+      <div class="note" id="subStatusInsight"></div>
     </div>
   </section>
 
@@ -651,12 +685,35 @@ footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--border);pa
       "views": 1550
     }
   ],
-  "topVideos": [
+  "deviceType90d": [
     {
-      "title": "Sobre a gajeta -  #chimarrao #tradição",
-      "views": 4441,
-      "videoId": "-Y5mZ7IAicw"
+      "device": "Celular",
+      "views": 2238
     },
+    {
+      "device": "Computador",
+      "views": 405
+    },
+    {
+      "device": "TV",
+      "views": 270
+    },
+    {
+      "device": "Tablet",
+      "views": 32
+    }
+  ],
+  "subscribedStatus90d": [
+    {
+      "status": "Não inscrito",
+      "views": 2760
+    },
+    {
+      "status": "Inscrito",
+      "views": 185
+    }
+  ],
+  "topVideos": [
     {
       "title": "De como cantar um flete - #shorts",
       "views": 1932,
@@ -688,9 +745,9 @@ footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--border);pa
       "videoId": "-mXqaDszBGA"
     },
     {
-      "title": "A gaita não veio - Mas tem as guitarras 🎼✨ #maykellpaiva",
-      "views": 1449,
-      "videoId": "jLdkXMtnaX8"
+      "title": "Sonoridade dos diferentes idiomas… muito interessante!",
+      "views": 1419,
+      "videoId": "t_ANORhaixY"
     },
     {
       "title": "14 de janeiro de 2026",
@@ -711,6 +768,11 @@ footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--border);pa
       "title": "Rodeio de Vacaria #maykellpaiva #violaogaucho  #musica #shortyoutube #gauchos",
       "views": 1295,
       "videoId": "EuEP0WswtiI"
+    },
+    {
+      "title": "MAYKELL PAIVA - Ensaio 24ª Estância da Canção Gaúcha!",
+      "views": 1285,
+      "videoId": "G0NBmCjG_sQ"
     }
   ],
   "almaDoSul": [
@@ -734,9 +796,15 @@ const muted = css.getPropertyValue('--muted').trim();
 const grid = css.getPropertyValue('--grid').trim();
 const blue = css.getPropertyValue('--blue').trim();
 const orange = css.getPropertyValue('--orange').trim();
+const aqua = css.getPropertyValue('--aqua').trim();
+const yellow = css.getPropertyValue('--yellow').trim();
+const slotColors = [blue, orange, aqua, yellow];
 
 function fmt(n){ return new Intl.NumberFormat('pt-BR').format(n); }
-function truncate(s, n){ return s.length > n ? s.slice(0, n - 1) + '…' : s; }
+function truncate(s, n){
+  const chars = Array.from(s);
+  return chars.length > n ? chars.slice(0, n - 1).join('') + '…' : s;
+}
 function fmtDatePt(iso){
   const [y,m,d] = iso.split('-');
   return `${d}/${m}`;
@@ -819,20 +887,54 @@ new Chart(document.getElementById('chartViews'), {
   }
 });
 
-// Subscribers gained per day (bar)
+// Subscribers gained per week (bar, value always visible above each bar)
+function weeklyBuckets(daily){
+  const weeks = [];
+  for (let i = 0; i < daily.length; i += 7){
+    const chunk = daily.slice(i, i + 7);
+    weeks.push({
+      label: fmtDatePt(chunk[0].date),
+      total: chunk.reduce((sum, d) => sum + d.subscribersGained, 0),
+    });
+  }
+  return weeks;
+}
+const subWeeks = weeklyBuckets(DATA.daily90d);
+
+const topLabelsSkipZero = {
+  id: 'topLabelsSkipZero',
+  afterDatasetsDraw(chart){
+    const {ctx} = chart;
+    const meta = chart.getDatasetMeta(0);
+    meta.data.forEach((bar, i) => {
+      const val = chart.data.datasets[0].data[i];
+      if (!val) return;
+      ctx.save();
+      ctx.fillStyle = ink;
+      ctx.font = '700 13px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'bottom';
+      ctx.fillText(fmt(val), bar.x, bar.y - 6);
+      ctx.restore();
+    });
+  }
+};
+
 new Chart(document.getElementById('chartSubs'), {
   type: 'bar',
   data: {
-    labels: DATA.daily90d.map(d => fmtDatePt(d.date)),
-    datasets: [{ data: DATA.daily90d.map(d => d.subscribersGained), backgroundColor: blue, borderRadius: 4, maxBarThickness: 10 }]
+    labels: subWeeks.map(w => 'sem. ' + w.label),
+    datasets: [{ data: subWeeks.map(w => w.total), backgroundColor: blue, borderRadius: 4, maxBarThickness: 26 }]
   },
   options: {
     plugins: { legend: { display: false } },
+    layout: { padding: { top: 22 } },
     scales: {
-      x: { ticks: { maxTicksLimit: 8, color: muted }, grid: { display: false } },
+      x: { ticks: { color: muted, maxRotation: 0, autoSkipPadding: 8 }, grid: { display: false } },
       y: { beginAtZero: true, ticks: { stepSize: 1, color: muted }, grid: { color: grid } },
     },
-  }
+  },
+  plugins: [topLabelsSkipZero],
 });
 
 // Traffic source (horizontal bar)
@@ -860,6 +962,49 @@ document.getElementById('countryNote').textContent = topCountry
   ? `Público quase inteiramente de ${topCountry.country === 'BR' ? 'Brasil' : topCountry.country} nos últimos 90 dias - sem outro país com volume relevante de visualizações.`
   : '';
 
+// Donut charts - device type & subscribed status, with a custom value+percentage legend
+function renderDonut(canvasId, legendId, items, labelKey){
+  const total = items.reduce((s, it) => s + it.views, 0);
+  const colors = items.map((_, i) => slotColors[i % slotColors.length]);
+  new Chart(document.getElementById(canvasId), {
+    type: 'doughnut',
+    data: {
+      labels: items.map(it => it[labelKey]),
+      datasets: [{ data: items.map(it => it.views), backgroundColor: colors, borderColor: css.getPropertyValue('--surface').trim() || '#fff', borderWidth: 2 }]
+    },
+    options: {
+      cutout: '62%',
+      plugins: { legend: { display: false } },
+    }
+  });
+  const legend = document.getElementById(legendId);
+  items.forEach((it, i) => {
+    const pct = total ? Math.round((it.views / total) * 100) : 0;
+    const row = document.createElement('div');
+    row.className = 'donut-row';
+    row.innerHTML = `<span class="sw" style="background:${colors[i]}"></span><span class="lbl">${it[labelKey]}</span><span class="val">${fmt(it.views)}</span><span class="pct">${pct}%</span>`;
+    legend.appendChild(row);
+  });
+  return total;
+}
+
+const deviceItems = [...DATA.deviceType90d].sort((a,b) => b.views - a.views);
+renderDonut('chartDevice', 'deviceLegend', deviceItems, 'device');
+const topDevice = deviceItems[0];
+const topDevicePct = topDevice ? Math.round((topDevice.views / deviceItems.reduce((s,d)=>s+d.views,0)) * 100) : 0;
+document.getElementById('deviceInsight').textContent = topDevice
+  ? `${topDevicePct}% assiste pelo ${topDevice.device.toLowerCase()} - vale garantir que título, thumbnail e legendas fiquem legíveis em tela pequena antes de publicar.`
+  : '';
+
+const subItems = [...DATA.subscribedStatus90d].sort((a,b) => b.views - a.views);
+renderDonut('chartSubStatus', 'subStatusLegend', subItems, 'status');
+const naoInscrito = subItems.find(s => s.status === 'Não inscrito');
+const totalSub = subItems.reduce((s,d)=>s+d.views,0);
+const naoInscritoPct = naoInscrito && totalSub ? Math.round((naoInscrito.views / totalSub) * 100) : 0;
+document.getElementById('subStatusInsight').textContent = naoInscrito
+  ? `${naoInscritoPct}% de quem assiste ainda não é inscrito - maior oportunidade de crescimento: reforçar o pedido de inscrição nos vídeos e nos primeiros segundos.`
+  : '';
+
 // Top videos (horizontal bar)
 const topVideosList = DATA.topVideos.slice(0, 12);
 new Chart(document.getElementById('chartTop'), {
@@ -884,7 +1029,7 @@ new Chart(document.getElementById('chartTop'), {
 });
 
 document.getElementById('footerNote').textContent =
-  'Dados oficiais do YouTube (Data API + Analytics API), canal do próprio Maykell Paiva. Snapshot estático - peça uma atualização quando quiser dados mais recentes.';
+  'Dados oficiais do YouTube (Data API + Analytics API), canal do próprio Maykell Paiva.';
 </script>
 </body>
 </html>

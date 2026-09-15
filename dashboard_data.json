@@ -515,12 +515,35 @@
       "views": 1550
     }
   ],
-  "topVideos": [
+  "deviceType90d": [
     {
-      "title": "Sobre a gajeta -  #chimarrao #tradição",
-      "views": 4441,
-      "videoId": "-Y5mZ7IAicw"
+      "device": "Celular",
+      "views": 2238
     },
+    {
+      "device": "Computador",
+      "views": 405
+    },
+    {
+      "device": "TV",
+      "views": 270
+    },
+    {
+      "device": "Tablet",
+      "views": 32
+    }
+  ],
+  "subscribedStatus90d": [
+    {
+      "status": "Não inscrito",
+      "views": 2760
+    },
+    {
+      "status": "Inscrito",
+      "views": 185
+    }
+  ],
+  "topVideos": [
     {
       "title": "De como cantar um flete - #shorts",
       "views": 1932,
@@ -552,9 +575,9 @@
       "videoId": "-mXqaDszBGA"
     },
     {
-      "title": "A gaita não veio - Mas tem as guitarras 🎼✨ #maykellpaiva",
-      "views": 1449,
-      "videoId": "jLdkXMtnaX8"
+      "title": "Sonoridade dos diferentes idiomas… muito interessante!",
+      "views": 1419,
+      "videoId": "t_ANORhaixY"
     },
     {
       "title": "14 de janeiro de 2026",
@@ -575,6 +598,11 @@
       "title": "Rodeio de Vacaria #maykellpaiva #violaogaucho  #musica #shortyoutube #gauchos",
       "views": 1295,
       "videoId": "EuEP0WswtiI"
+    },
+    {
+      "title": "MAYKELL PAIVA - Ensaio 24ª Estância da Canção Gaúcha!",
+      "views": 1285,
+      "videoId": "G0NBmCjG_sQ"
     }
   ],
   "almaDoSul": [

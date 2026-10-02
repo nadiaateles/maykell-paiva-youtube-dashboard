@@ -92,6 +92,23 @@ footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--border);pa
 .donut-row .lbl{font-size:13.5px;color:var(--ink);flex:1;}
 .donut-row .val{font-size:14px;font-weight:700;font-variant-numeric:tabular-nums;}
 .donut-row .pct{font-size:12px;color:var(--muted);min-width:42px;text-align:right;font-variant-numeric:tabular-nums;}
+
+.report-lead{font-size:14.5px;color:var(--ink);margin:4px 0 20px;max-width:780px;}
+.report-lead strong{color:var(--orange);}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media (max-width:780px){.actions{grid-template-columns:1fr;}}
+.action{background:var(--page);border:1px solid var(--border);border-radius:12px;padding:16px 18px;}
+.action .num{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:var(--orange);color:#fff;font-size:12px;font-weight:700;margin-right:8px;flex:none;}
+.action h3{display:flex;align-items:center;font-size:15px;margin:0 0 10px;}
+.action .k{font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);margin:10px 0 3px;}
+.action p{font-size:13.5px;margin:0;color:var(--ink-secondary);}
+.action p b{color:var(--ink);}
+.action .how{font-size:12.5px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px 10px;margin-top:4px;color:var(--ink-secondary);}
+.watch{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:6px;}
+.watch th{text-align:left;font-size:11.5px;color:var(--ink-secondary);font-weight:600;padding:8px 10px;border-bottom:1px solid var(--border);}
+.watch td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;}
+.watch td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:700;color:var(--orange);white-space:nowrap;}
+.report-h{font-size:15px;font-weight:700;margin:26px 0 4px;}
 </style>
 </head>
 <body>
@@ -168,6 +185,82 @@ footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--border);pa
       <h2>Vídeos com mais visualizações</h2>
       <div class="sub">Histórico completo do canal</div>
       <div class="chart-box"><canvas id="chartTop" height="320"></canvas></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="panel">
+      <h2>O que fazer com esses números</h2>
+      <div class="sub">Leitura de 02/10/2026</div>
+      <p class="report-lead">O EP <strong>mais que dobrou o movimento do canal</strong>: foram 2.095 visualizações nos últimos 30 dias, contra 837 e 946 nos dois meses anteriores. Mas quase ninguém virou inscrito. O trabalho agora é fazer quem chega pela busca e pelos Shorts encontrar o resto da obra.</p>
+      <div class="actions">
+      <div class="action">
+        <h3><span class="num">1</span>Montar a playlist do EP e as telas finais</h3>
+        <div class="k">O que os números mostram</div>
+        <p>Em 90 dias, a <b>playlist</b> trouxe só 56 visualizações e a <b>tela final</b> só 3. Hoje cada faixa funciona sozinha: quem termina uma não encontra o caminho pra próxima.</p>
+        <div class="k">O que fazer</div>
+        <p>Criar a playlist "Alma do Sul" com as faixas na ordem do EP e colocar, no fim de cada vídeo completo, uma tela final apontando pra próxima faixa ou pra playlist.</p>
+        <div class="k">Onde fazer</div>
+        <div class="how">YouTube Studio &gt; Conteúdo &gt; Playlists &gt; Nova playlist. Depois, em cada vídeo: Editar &gt; Tela final &gt; Playlist.</div>
+      </div>
+      <div class="action">
+        <h3><span class="num">2</span>Ligar cada Short à faixa completa</h3>
+        <div class="k">O que os números mostram</div>
+        <p>Os Shorts trouxeram <b>509 visualizações</b> em 90 dias. O Short de Descanso teve 269 visualizações e 14 curtidas, mais que o vídeo completo da mesma faixa (80).</p>
+        <div class="k">O que fazer</div>
+        <p>Em cada Short do EP, usar o recurso "Vídeo relacionado" apontando pra versão completa da faixa. Quem gostou do trecho chega na música inteira com um toque.</p>
+        <div class="k">Onde fazer</div>
+        <div class="how">YouTube Studio &gt; Conteúdo &gt; Shorts &gt; abrir o Short &gt; Vídeo relacionado. Devaneios ainda não tem a versão completa publicada: ligar quando sair.</div>
+      </div>
+      <div class="action">
+        <h3><span class="num">3</span>Escrever título e descrição para quem procura</h3>
+        <div class="k">O que os números mostram</div>
+        <p>A <b>busca no YouTube</b> é a maior fonte do canal: 1.768 visualizações, perto de metade do total. A notificação trouxe só 21. Quem chega, chega procurando.</p>
+        <div class="k">O que fazer</div>
+        <p>No título, além do nome da faixa, dizer o que a música é com as palavras que as pessoas digitam (ex: violão gaúcho instrumental, milonga instrumental). Na descrição, 2 ou 3 linhas sobre a faixa, a ficha técnica e o link do EP completo nas plataformas.</p>
+        <div class="k">Onde fazer</div>
+        <div class="how">YouTube Studio &gt; Conteúdo &gt; Editar &gt; Título, Descrição e Tags. Vale também pros vídeos antigos que já são bem procurados.</div>
+      </div>
+      <div class="action">
+        <h3><span class="num">4</span>Fechar o EP no YouTube</h3>
+        <div class="k">O que os números mostram</div>
+        <p>Serenando e Reflexão ainda estão <b>privadas</b>. A <b>TV</b> já soma 248 visualizações (6%), e é onde a música instrumental costuma ser ouvida inteira.</p>
+        <div class="k">O que fazer</div>
+        <p>Publicar as faixas 05 e 06 e, com o EP completo, subir também um vídeo único com as 6 faixas, separado em capítulos.</p>
+        <div class="k">Onde fazer</div>
+        <div class="how">Capítulos: na descrição do vídeo, listar a minutagem de cada faixa começando em 00:00 (ex: 00:00 Paz do Campo). O YouTube cria os capítulos sozinho.</div>
+      </div>
+      <div class="action">
+        <h3><span class="num">5</span>Preparar a página do canal para quem chega novo</h3>
+        <div class="k">O que os números mostram</div>
+        <p><b>94% das visualizações</b> são de quem não é inscrito, e só 12 inscritos novos vieram em 90 dias. O público aparece, mas não fica.</p>
+        <div class="k">O que fazer</div>
+        <p>Definir um vídeo de apresentação do canal para não inscritos, organizar a página inicial em seções (Alma do Sul, Violão gaúcho, Festivais e bastidores) e ativar a marca d'água de inscrição nos vídeos.</p>
+        <div class="k">Onde fazer</div>
+        <div class="how">YouTube Studio &gt; Personalização &gt; Layout (vídeo de apresentação e seções) e &gt; Branding (marca d'água).</div>
+      </div>
+      <div class="action">
+        <h3><span class="num">6</span>Manter a linha de conteúdo que atrai público novo</h3>
+        <div class="k">O que os números mostram</div>
+        <p>Entre os vídeos mais vistos da história do canal estão o <b>violão explicado</b> (acorde, cifra, como cantar um flete) e os <b>bastidores de festival</b>. A duração média de visualização é de 65 segundos, e 77% assistem no celular.</p>
+        <div class="k">O que fazer</div>
+        <p>Seguir publicando, em paralelo ao EP, Shorts curtos de violão e de bastidores. São a porta de entrada de quem ainda não conhece o trabalho, e depois a playlist e a página do canal mostram o resto.</p>
+        <div class="k">Onde fazer</div>
+        <div class="how">Miniatura e título pensados pra tela pequena: poucas palavras, letra grande, rosto ou violão em destaque.</div>
+      </div>
+      </div>
+
+      <div class="report-h">O que acompanhar na próxima atualização</div>
+      <div class="sub">Valores de hoje como ponto de partida. Se as ações acima funcionarem, são estes números que se mexem primeiro.</div>
+      <table class="watch">
+        <thead><tr><th>Indicador</th><th>Por que importa</th><th style="text-align:right">Hoje</th></tr></thead>
+        <tbody>
+          <tr><td>Visualizações vindas de playlist</td><td>Mostra se quem ouve uma faixa está seguindo pras outras</td><td class="num">56</td></tr>
+          <tr><td>Visualizações vindas de tela final</td><td>Mostra se o fim de cada vídeo está levando pra próxima faixa</td><td class="num">3</td></tr>
+          <tr><td>Visualizações nos vídeos completos do EP</td><td>Mostra se os Shorts estão levando pra música inteira</td><td class="num">741</td></tr>
+          <tr><td>Inscritos ganhos (90 dias)</td><td>Mostra se quem chega novo está ficando</td><td class="num">12</td></tr>
+        </tbody>
+      </table>
     </div>
   </section>
 

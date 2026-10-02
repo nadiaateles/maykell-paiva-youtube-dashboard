@@ -1,108 +1,23 @@
 {
-  "generatedAt": "2026-09-15",
+  "generatedAt": "2026-10-02",
   "channel": {
     "title": "Maykell Paiva",
     "createdAt": "2012-06-27",
     "subscribers": 1580,
-    "totalViews": 86446,
-    "videoCount": 244
+    "totalViews": 88230,
+    "videoCount": 251
   },
   "lifetime": {
-    "views": 94211,
-    "estimatedMinutesWatched": 74861,
+    "views": 95895,
+    "estimatedMinutesWatched": 75306,
     "averageViewDuration": 65,
-    "subscribersGained": 1836,
-    "subscribersLost": 254,
-    "likes": 5494,
-    "comments": 343,
-    "shares": 860
+    "subscribersGained": 1841,
+    "subscribersLost": 255,
+    "likes": 5534,
+    "comments": 345,
+    "shares": 865
   },
   "daily90d": [
-    {
-      "date": "2026-06-17",
-      "views": 53,
-      "subscribersGained": 0
-    },
-    {
-      "date": "2026-06-18",
-      "views": 51,
-      "subscribersGained": 0
-    },
-    {
-      "date": "2026-06-19",
-      "views": 51,
-      "subscribersGained": 0
-    },
-    {
-      "date": "2026-06-20",
-      "views": 75,
-      "subscribersGained": 1
-    },
-    {
-      "date": "2026-06-21",
-      "views": 38,
-      "subscribersGained": 1
-    },
-    {
-      "date": "2026-06-22",
-      "views": 42,
-      "subscribersGained": 0
-    },
-    {
-      "date": "2026-06-23",
-      "views": 45,
-      "subscribersGained": 0
-    },
-    {
-      "date": "2026-06-24",
-      "views": 45,
-      "subscribersGained": 0
-    },
-    {
-      "date": "2026-06-25",
-      "views": 27,
-      "subscribersGained": 0
-    },
-    {
-      "date": "2026-06-26",
-      "views": 56,
-      "subscribersGained": 0
-    },
-    {
-      "date": "2026-06-27",
-      "views": 34,
-      "subscribersGained": 0
-    },
-    {
-      "date": "2026-06-28",
-      "views": 52,
-      "subscribersGained": 0
-    },
-    {
-      "date": "2026-06-29",
-      "views": 40,
-      "subscribersGained": 1
-    },
-    {
-      "date": "2026-06-30",
-      "views": 31,
-      "subscribersGained": 1
-    },
-    {
-      "date": "2026-07-01",
-      "views": 30,
-      "subscribersGained": 0
-    },
-    {
-      "date": "2026-07-02",
-      "views": 40,
-      "subscribersGained": 1
-    },
-    {
-      "date": "2026-07-03",
-      "views": 41,
-      "subscribersGained": 0
-    },
     {
       "date": "2026-07-04",
       "views": 33,
@@ -445,7 +360,7 @@
     },
     {
       "date": "2026-09-10",
-      "views": 37,
+      "views": 36,
       "subscribersGained": 0
     },
     {
@@ -455,54 +370,147 @@
     },
     {
       "date": "2026-09-12",
-      "views": 43,
+      "views": 41,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-13",
+      "views": 59,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-14",
+      "views": 62,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-15",
+      "views": 223,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-09-16",
+      "views": 78,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-09-17",
+      "views": 89,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-18",
+      "views": 58,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-19",
+      "views": 74,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-20",
+      "views": 50,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-21",
+      "views": 145,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-22",
+      "views": 204,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-23",
+      "views": 128,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-24",
+      "views": 275,
+      "subscribersGained": 1
+    },
+    {
+      "date": "2026-09-25",
+      "views": 31,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-26",
+      "views": 33,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-27",
+      "views": 118,
+      "subscribersGained": 2
+    },
+    {
+      "date": "2026-09-28",
+      "views": 32,
+      "subscribersGained": 0
+    },
+    {
+      "date": "2026-09-29",
+      "views": 28,
       "subscribersGained": 0
     }
   ],
   "trafficSource90d": [
     {
       "source": "Busca no YouTube",
-      "views": 1806
+      "views": 1768
     },
     {
       "source": "Inscritos (feed/home)",
-      "views": 336
-    },
-    {
-      "source": "Vídeos relacionados",
-      "views": 281
+      "views": 975
     },
     {
       "source": "Shorts",
-      "views": 153
+      "views": 509
+    },
+    {
+      "source": "Vídeos relacionados",
+      "views": 239
     },
     {
       "source": "Página do canal",
-      "views": 136
+      "views": 148
     },
     {
       "source": "Link externo",
-      "views": 93
+      "views": 97
     },
     {
       "source": "Playlist",
-      "views": 59
+      "views": 56
     },
     {
       "source": "Outra página do YouTube",
-      "views": 41
+      "views": 30
     },
     {
       "source": "Outro (sem link)",
-      "views": 25
+      "views": 28
     },
     {
       "source": "Notificação",
-      "views": 12
+      "views": 21
     },
     {
       "source": "Tela final",
+      "views": 3
+    },
+    {
+      "source": "Página de áudio",
       "views": 2
+    },
+    {
+      "source": "Anotações",
+      "views": 1
     },
     {
       "source": "Hashtags",
@@ -512,41 +520,41 @@
   "country90d": [
     {
       "country": "BR",
-      "views": 1550
+      "views": 1918
     }
   ],
   "deviceType90d": [
     {
       "device": "Celular",
-      "views": 2238
+      "views": 2979
     },
     {
       "device": "Computador",
-      "views": 405
+      "views": 605
     },
     {
       "device": "TV",
-      "views": 270
+      "views": 248
     },
     {
       "device": "Tablet",
-      "views": 32
+      "views": 46
     }
   ],
   "subscribedStatus90d": [
     {
       "status": "Não inscrito",
-      "views": 2760
+      "views": 3671
     },
     {
       "status": "Inscrito",
-      "views": 185
+      "views": 207
     }
   ],
   "topVideos": [
     {
       "title": "De como cantar um flete - #shorts",
-      "views": 1932,
+      "views": 1954,
       "videoId": "s3W16gScbDw"
     },
     {
@@ -556,7 +564,7 @@
     },
     {
       "title": "Maykell Paiva.m4v",
-      "views": 1826,
+      "views": 1827,
       "videoId": "bzhCkOIJRRM"
     },
     {
@@ -566,7 +574,7 @@
     },
     {
       "title": "Dele guitarra na Sapecada da Canção 2026",
-      "views": 1613,
+      "views": 1616,
       "videoId": "sBgzXYOH2X0"
     },
     {
@@ -586,7 +594,7 @@
     },
     {
       "title": "APAYSANADO - (MARCELLO CAMINHA)",
-      "views": 1348,
+      "views": 1359,
       "videoId": "uFoX9X_V9DE"
     },
     {
@@ -601,7 +609,7 @@
     },
     {
       "title": "MAYKELL PAIVA - Ensaio 24ª Estância da Canção Gaúcha!",
-      "views": 1285,
+      "views": 1287,
       "videoId": "G0NBmCjG_sQ"
     }
   ],
@@ -609,8 +617,65 @@
     {
       "title": "01. Paz do Campo - Alma do Sul | Maykell Paiva",
       "publishedAt": "2026-09-13T02:56:16Z",
-      "views": 60,
+      "format": "Vídeo completo",
+      "views": 255,
+      "likes": 4,
+      "comments": 0
+    },
+    {
+      "title": "Lançamento - Alma do Sul | Maykell Paiva",
+      "publishedAt": "2026-09-15T14:15:28Z",
+      "format": "Short",
+      "views": 23,
+      "likes": 0,
+      "comments": 0
+    },
+    {
+      "title": "02. Descanso - Alma do Sul | Maykell Paiva",
+      "publishedAt": "2026-09-15T22:30:34Z",
+      "format": "Vídeo completo",
+      "views": 80,
+      "likes": 4,
+      "comments": 0
+    },
+    {
+      "title": "03. Amanhecer - Alma do Sul | Maykell Paiva",
+      "publishedAt": "2026-09-18T22:30:06Z",
+      "format": "Vídeo completo",
+      "views": 406,
+      "likes": 5,
+      "comments": 0
+    },
+    {
+      "title": "01. Paz do Campo - Alma do Sul | Maykell Paiva",
+      "publishedAt": "2026-09-21T15:15:19Z",
+      "format": "Short",
+      "views": 49,
       "likes": 3,
+      "comments": 0
+    },
+    {
+      "title": "02. Descanso - Alma do Sul | Maykell Paiva",
+      "publishedAt": "2026-09-24T15:15:14Z",
+      "format": "Short",
+      "views": 269,
+      "likes": 14,
+      "comments": 0
+    },
+    {
+      "title": "03. Amanhecer - Alma do Sul | Maykell Paiva",
+      "publishedAt": "2026-09-27T15:15:14Z",
+      "format": "Short",
+      "views": 90,
+      "likes": 5,
+      "comments": 0
+    },
+    {
+      "title": "04. Devaneios - Alma do Sul | Maykell Paiva",
+      "publishedAt": "2026-09-30T15:15:32Z",
+      "format": "Short",
+      "views": 48,
+      "likes": 1,
       "comments": 0
     }
   ]
